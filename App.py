@@ -196,4 +196,23 @@ class HDF(ttk.Frame):
         table.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=0)
         return table
 
+    # Event handler for submit button
+    def on_submit(self):
+        name = self.name.get()
+        date = self.date.get()
+        age = self.age.get()
+        gender = self.gender.get()
+        address = self.address.get()
+        phone_number = self.phone_number.get()
+        email_address = self.email_address.get()
+  	    # Get the contact status value
+        vaccination_status = self.vaccination_status.get()
+	    # Get the contact status value
+        symptoms = self.symptoms.get()
+	    # Get the exposure status value
+        exposure_status = self.exposure_status.get()
+        # Get the contact status value
+        contact_status = self.contact_status.get()  
+        # Get the COVID-19 test status value
+        covid_test_status = self.covid_test_status.get()  
 
