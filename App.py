@@ -83,3 +83,12 @@ class HDF(ttk.Frame):
         self.create_form_entry(contact_info_frame, "Contact Number:", self.contact_number)
         self.create_form_entry(contact_info_frame, "Email Address:", self.contact_email)
         self.create_form_entry(contact_info_frame, "Relationship to the contact person:", self.relationship)
+
+        # Questionnaires Section
+        questionnaires_frame = ttk.LabelFrame(content_frame, text="Questionnaires")
+        questionnaires_frame.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=5)
+
+        self.create_radiobuttons(questionnaires_frame)
+        self.create_symptoms_combobox(questionnaires_frame)
+        self.create_contact_radiobutton(questionnaires_frame)
+        self.create_covid_test_radiobutton(questionnaires_frame)
