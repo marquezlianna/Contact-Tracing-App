@@ -105,3 +105,19 @@ class HDF(ttk.Frame):
         self.create_buttonbox(content_frame)
 
         self.table = self.create_table()
+
+    # Function to create form entry with label and entry field
+    def create_form_entry(self, frame, label, variable):
+        form_field_container = ttk.Frame(frame)
+        form_field_container.pack(fill=tk.X, expand=True, pady=5)
+
+        form_field_label = ttk.Label(master=form_field_container, text=label, width=25)
+        form_field_label.pack(side=tk.LEFT, padx=5)
+
+        form_input = ttk.Entry(master=form_field_container, textvariable=variable)
+        form_input.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
+
+        add_regex_validation(form_input, r'^[a-zA-Z0-9_]*$')
+
+        return form_input
+
