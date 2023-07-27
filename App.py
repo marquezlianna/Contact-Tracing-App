@@ -5,18 +5,18 @@ from ttkbootstrap.toast import ToastNotification
 from ttkbootstrap.validation import add_regex_validation
 from ttkbootstrap.tableview import Tableview
 
-# Define a class HDF
+# Define a class HDF that inherits from ttk.Frame
 class HDF(ttk.Frame):
     # Constructor method for the class
     def __init__(self, master_window):
-        # Initialize the parent class constructor
+        # Initialize the parent class (ttk.Frame) constructor
         super().__init__(master_window, padding=(10, 10, 10, 10))
-
+        
         # Create a label for the heading
         heading_label = ttk.Label(self, text="Health Declaration Form", font= ('Cascadia Code', 24))
         heading_label.pack(fill=tk.X, pady=10, padx= 25)
-
-# Initialize instance variables
+        
+        # Initialize instance variables
         self.pack(fill=tk.BOTH, expand=tk.YES)
         self.name = ttk.StringVar(value="")
         self.date = ttk.StringVar(value="")
@@ -50,8 +50,8 @@ class HDF(ttk.Frame):
         # Configure the canvas to work with the scrollbar
         canvas.config(yscrollcommand=scrollbar.set)
         canvas.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
-        
-        # Create a frame inside the canvas to hold all the content
+
+        # Create a Frame inside the canvas to hold all the content
         content_frame = ttk.Frame(canvas)
         canvas.create_window((0, 0), window=content_frame, anchor="nw")
 
@@ -120,7 +120,7 @@ class HDF(ttk.Frame):
         add_regex_validation(form_input, r'^[a-zA-Z0-9_]*$')
 
         return form_input
-    
+
     # Function to create radiobuttons for vaccination status and exposure status
     def create_radiobuttons(self, frame):
         vaccine_container = ttk.Frame(frame)
@@ -142,7 +142,7 @@ class HDF(ttk.Frame):
         exposure_options = ["Yes", "No", "Not Sure"]
         for option in exposure_options:
             ttk.Radiobutton(exposure_container, text=option, variable=self.exposure_status, value=option).pack(side=tk.LEFT)
-
+            
     # Function to create combobox for symptoms selection
     def create_symptoms_combobox(self, frame):
         symptoms_container = ttk.Frame(frame)
@@ -155,7 +155,7 @@ class HDF(ttk.Frame):
                             "Difficulty of Breathing", "Loss of Taste", "None of the above"]
         symptoms_combobox = ttk.Combobox(symptoms_container, textvariable=self.symptoms, values=symptoms_options)
         symptoms_combobox.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
-
+        
     # Function to add radiobuttons for contact status
     def create_contact_radiobutton(self, frame):  
         contact_container = ttk.Frame(frame)
@@ -167,17 +167,29 @@ class HDF(ttk.Frame):
         contact_options = ["Yes", "No"]
         for option in contact_options:
             ttk.Radiobutton(contact_container, text=option, variable=self.contact_status, value=option).pack(side=tk.LEFT)
+            
+    # Function to add radiobuttons for COVID-19 test status
+    def create_covid_test_radiobutton(self, frame):  
+        covid_test_container = ttk.Frame(frame)
+        covid_test_container.pack(fill=tk.X, expand=True, pady=5)
+
+        covid_test_label = ttk.Label(master=covid_test_container, text="5. Have you been tested for COVID-19 in the last 14 days?", width=70)
+        covid_test_label.pack(side=tk.LEFT, padx=5)
+
+        covid_test_options = ["No", "Yes- Negative", "Yes- Positive"]
+        for option in covid_test_options:
+            ttk.Radiobutton(covid_test_container, text=option, variable=self.covid_test_status, value=option).pack(side=tk.LEFT)
 
     # Function to create the button box with Submit and Cancel buttons
     def create_buttonbox(self, frame):
         button_container = ttk.Frame(frame)
         button_container.pack(fill=tk.X, expand=True, pady=(30, 20))
-        
+
         # Set the font size for the buttons
         button_style = ttk.Style()
         button_style.configure('custom.TButton', font=('Arial', 18))  
 
-    # Create cancel button
+        # Create cancel button
         cancel_btn = ttk.Button(master=button_container, text="Cancel", command=self.on_cancel, style='danger.custom.TButton', width=12)
         cancel_btn.pack(side=tk.RIGHT, padx=20)
 
@@ -205,11 +217,11 @@ class HDF(ttk.Frame):
         address = self.address.get()
         phone_number = self.phone_number.get()
         email_address = self.email_address.get()
-  	    # Get the contact status value
+  	  # Get the contact status value
         vaccination_status = self.vaccination_status.get()
-	    # Get the contact status value
+	  # Get the contact status value
         symptoms = self.symptoms.get()
-	    # Get the exposure status value
+	  # Get the exposure status value
         exposure_status = self.exposure_status.get()
         # Get the contact status value
         contact_status = self.contact_status.get()  
@@ -238,7 +250,7 @@ class HDF(ttk.Frame):
         print("Contact Number:", contact_number)
         print("Email Address:", contact_email)
         print("Relationship to the contact person:", relationship)
-   
+
         toast = ToastNotification(title="Submission successful!", message="Your data has been successfully submitted.", duration=3000)
         toast.show_toast()
 
@@ -246,6 +258,26 @@ class HDF(ttk.Frame):
         self.table.destroy()
         self.table = self.create_table()
 
-# Event handler for cancel button
+    # Event handler for cancel button
     def on_cancel(self):
         self.quit()
+
+# Main program
+if __name__ == "__main__":
+    # Create the root window
+    root = tk.Tk()
+    # Set the theme for ttkbootstrap
+    style = ttk.Style(theme='solar')
+    
+    # Set the theme for ttkbootstrap
+    root.title("COVID CONTACT TRACKER")
+    root.geometry("800x800")  
+    root.resizable(True, True)  
+
+    # Create an instance of the HDF class
+    hdf_frame = HDF(root)
+    
+    # Start the Tkinter main event loop
+    root.mainloop()
+
+
