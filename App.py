@@ -167,3 +167,8 @@ class HDF(ttk.Frame):
         contact_options = ["Yes", "No"]
         for option in contact_options:
             ttk.Radiobutton(contact_container, text=option, variable=self.contact_status, value=option).pack(side=tk.LEFT)
+
+    # Function to create the button box with Submit and Cancel buttons
+    def create_buttonbox(self, frame):
+        button_container = ttk.Frame(frame)
+        button_container.pack(fill=tk.X, expand=True, pady=(30, 20))
