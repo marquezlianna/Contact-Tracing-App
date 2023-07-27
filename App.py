@@ -70,3 +70,16 @@ class HDF(ttk.Frame):
         self.create_form_entry(personal_info_frame, "Address:", self.address)
         self.create_form_entry(personal_info_frame, "Phone Number:", self.phone_number)
         self.create_form_entry(personal_info_frame, "Email Address:", self.email_address)
+
+        # Contact Person Details Section
+        contact_info_frame = ttk.LabelFrame(content_frame, text="Contact Person Details")
+        contact_info_frame.pack(fill=tk.X, padx=10, pady=5)
+
+        instruction_text = "Please enter the Contact Person Details:"
+        instruction = ttk.Label(contact_info_frame, text=instruction_text)
+        instruction.pack(fill=tk.X, pady=10)
+
+        self.create_form_entry(contact_info_frame, "Name:", self.contact_name)
+        self.create_form_entry(contact_info_frame, "Contact Number:", self.contact_number)
+        self.create_form_entry(contact_info_frame, "Email Address:", self.contact_email)
+        self.create_form_entry(contact_info_frame, "Relationship to the contact person:", self.relationship)
