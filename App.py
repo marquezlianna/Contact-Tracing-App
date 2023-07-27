@@ -50,3 +50,8 @@ class HDF(ttk.Frame):
         # Configure the canvas to work with the scrollbar
         canvas.config(yscrollcommand=scrollbar.set)
         canvas.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
+        
+        # Create a frame inside the canvas to hold all the content
+        content_frame = ttk.Frame(canvas)
+        canvas.create_window((0, 0), window=content_frame, anchor="nw")
+
