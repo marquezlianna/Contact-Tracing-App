@@ -47,3 +47,6 @@ class HDF(ttk.Frame):
         scrollbar = ttk.Scrollbar(self, orient=tk.VERTICAL, command=canvas.yview)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
+        # Configure the canvas to work with the scrollbar
+        canvas.config(yscrollcommand=scrollbar.set)
+        canvas.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
