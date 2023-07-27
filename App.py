@@ -42,3 +42,8 @@ class HDF(ttk.Frame):
         # Create a Canvas to enable scrolling
         canvas = tk.Canvas(self, highlightthickness=0)
         canvas.pack(fill=tk.BOTH, expand=tk.YES)
+
+        # Attach a scrollbar to the canvas
+        scrollbar = ttk.Scrollbar(self, orient=tk.VERTICAL, command=canvas.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
