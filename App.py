@@ -185,3 +185,15 @@ class HDF(ttk.Frame):
         submit_btn = ttk.Button(master=button_container, text="Submit", command=self.on_submit, style='success.custom.TButton', width=12)
         submit_btn.pack(side=tk.RIGHT, padx=5)
 
+    # Function to create the table
+    def create_table(self):
+        coldata = [{"text": "Name"}, {"text": "Date"}, {"text": "Age"}, {"text": "Gender"},
+                   {"text": "Address"}, {"text": "Phone Number"},
+                   {"text": "Email Address"}, {"text": "Vaccination Status"}, {"text": "Symptoms"},
+                   {"text": "Exposure Status"}, {"text": "Contact with COVID-19 Symptoms"}, {"text": "COVID-19 Test Status"}]
+        table = Tableview(master=self, coldata=coldata, rowdata=self.data, paginated=True, searchable=True,
+                          bootstyle='primary', stripecolor=(self.colors.light, None))
+        table.pack(fill=tk.BOTH, expand=tk.YES, padx=10, pady=0)
+        return table
+
+
