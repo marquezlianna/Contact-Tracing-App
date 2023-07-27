@@ -11,3 +11,7 @@ class HDF(ttk.Frame):
     def __init__(self, master_window):
         # Initialize the parent class constructor
         super().__init__(master_window, padding=(10, 10, 10, 10))
+
+        # Create a label for the heading
+        heading_label = ttk.Label(self, text="Health Declaration Form", font= ('Cascadia Code', 24))
+        heading_label.pack(fill=tk.X, pady=10, padx= 25)
