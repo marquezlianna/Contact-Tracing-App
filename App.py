@@ -172,3 +172,16 @@ class HDF(ttk.Frame):
     def create_buttonbox(self, frame):
         button_container = ttk.Frame(frame)
         button_container.pack(fill=tk.X, expand=True, pady=(30, 20))
+        
+        # Set the font size for the buttons
+        button_style = ttk.Style()
+        button_style.configure('custom.TButton', font=('Arial', 18))  
+
+    # Create cancel button
+        cancel_btn = ttk.Button(master=button_container, text="Cancel", command=self.on_cancel, style='danger.custom.TButton', width=12)
+        cancel_btn.pack(side=tk.RIGHT, padx=20)
+
+        # Create submit button
+        submit_btn = ttk.Button(master=button_container, text="Submit", command=self.on_submit, style='success.custom.TButton', width=12)
+        submit_btn.pack(side=tk.RIGHT, padx=5)
+
