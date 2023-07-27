@@ -120,4 +120,27 @@ class HDF(ttk.Frame):
         add_regex_validation(form_input, r'^[a-zA-Z0-9_]*$')
 
         return form_input
+    
+    # Function to create radiobuttons for vaccination status and exposure status
+    def create_radiobuttons(self, frame):
+        vaccine_container = ttk.Frame(frame)
+        vaccine_container.pack(fill=tk.X, expand=True, pady=5)
+
+        vaccine_label = ttk.Label(master=vaccine_container, text="1. Are you vaccinated for COVID-19?", width=50)
+        vaccine_label.pack(side=tk.LEFT, padx=5)
+
+        vaccination_options = ["Not Yet", "1st Dose", "2nd Dose", "1st Booster", "2nd Booster"]
+        for option in vaccination_options:
+            ttk.Radiobutton(vaccine_container, text=option, variable=self.vaccination_status, value=option).pack(side=tk.LEFT)
+
+        exposure_container = ttk.Frame(frame)
+        exposure_container.pack(fill=tk.X, expand=True, pady=5)
+
+        exposure_label = ttk.Label(master=exposure_container, text="2. Have you been exposed to a confirmed case in the last 14 days?", width=70)
+        exposure_label.pack(side=tk.LEFT, padx=5)
+
+        exposure_options = ["Yes", "No", "Not Sure"]
+        for option in exposure_options:
+            ttk.Radiobutton(exposure_container, text=option, variable=self.exposure_status, value=option).pack(side=tk.LEFT)
+
 
