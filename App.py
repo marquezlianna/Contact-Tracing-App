@@ -38,3 +38,7 @@ class HDF(ttk.Frame):
 
         self.data = []
         self.colors = ttk.Style(theme='solar').colors
+
+        # Create a Canvas to enable scrolling
+        canvas = tk.Canvas(self, highlightthickness=0)
+        canvas.pack(fill=tk.BOTH, expand=tk.YES)
