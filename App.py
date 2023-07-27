@@ -92,3 +92,16 @@ class HDF(ttk.Frame):
         self.create_symptoms_combobox(questionnaires_frame)
         self.create_contact_radiobutton(questionnaires_frame)
         self.create_covid_test_radiobutton(questionnaires_frame)
+
+        # Privacy Consent Section
+        privacy_consent_frame = ttk.LabelFrame(content_frame, text="Privacy Consent", padding=10, borderwidth=1, relief="solid")
+        privacy_consent_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
+
+        consent_message = ("Your privacy is of utmost importance to us. By submitting this COVID-19 form you acknowledge and agree that the provided data will be used for contact tracing and necessary health protocols as required by health authorities. Rest assured, your information will be handled in accordance with applicable data protection laws.")
+
+        consent_label = ttk.Label(privacy_consent_frame, text=consent_message, wraplength=700, font=('Times New Roman', 12), justify=tk.LEFT)
+        consent_label.pack(fill=tk.BOTH, padx=10, pady=5, expand=True)
+
+        self.create_buttonbox(content_frame)
+
+        self.table = self.create_table()
