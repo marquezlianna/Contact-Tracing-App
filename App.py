@@ -55,3 +55,18 @@ class HDF(ttk.Frame):
         content_frame = ttk.Frame(canvas)
         canvas.create_window((0, 0), window=content_frame, anchor="nw")
 
+        # Personal Information Section
+        personal_info_frame = ttk.LabelFrame(content_frame, text="Personal Information")
+        personal_info_frame.pack(fill=tk.X, padx=10, pady=5)
+
+        instruction_text = "Please enter your Personal Information:"
+        instruction = ttk.Label(personal_info_frame, text=instruction_text)
+        instruction.pack(fill=tk.X, pady=10)
+
+        self.create_form_entry(personal_info_frame, "Name:", self.name)
+        self.create_form_entry(personal_info_frame, "Date:", self.date)
+        self.create_form_entry(personal_info_frame, "Age:", self.age)
+        self.create_form_entry(personal_info_frame, "Gender:", self.gender)
+        self.create_form_entry(personal_info_frame, "Address:", self.address)
+        self.create_form_entry(personal_info_frame, "Phone Number:", self.phone_number)
+        self.create_form_entry(personal_info_frame, "Email Address:", self.email_address)
