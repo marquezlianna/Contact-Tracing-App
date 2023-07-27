@@ -143,4 +143,16 @@ class HDF(ttk.Frame):
         for option in exposure_options:
             ttk.Radiobutton(exposure_container, text=option, variable=self.exposure_status, value=option).pack(side=tk.LEFT)
 
+    # Function to create combobox for symptoms selection
+    def create_symptoms_combobox(self, frame):
+        symptoms_container = ttk.Frame(frame)
+        symptoms_container.pack(fill=tk.X, expand=True, pady=5)
+
+        symptoms_label = ttk.Label(master=symptoms_container, text="3. Do you have any symptoms in the past 7 days?", width=60)
+        symptoms_label.pack(side=tk.LEFT, padx=5)
+
+        symptoms_options = ["Fever", "Headache", "Colds", "Muscle Pain", "Sore Throat", "Cough", "Diarrhea",
+                            "Difficulty of Breathing", "Loss of Taste", "None of the above"]
+        symptoms_combobox = ttk.Combobox(symptoms_container, textvariable=self.symptoms, values=symptoms_options)
+        symptoms_combobox.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
 
