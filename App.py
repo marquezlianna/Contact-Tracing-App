@@ -245,3 +245,7 @@ class HDF(ttk.Frame):
         self.data.append((name, date, age, gender, address, phone_number, email_address, vaccination_status, symptoms, exposure_status, contact_status, covid_test_status))
         self.table.destroy()
         self.table = self.create_table()
+
+# Event handler for cancel button
+    def on_cancel(self):
+        self.quit()
