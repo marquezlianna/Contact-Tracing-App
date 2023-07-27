@@ -156,3 +156,14 @@ class HDF(ttk.Frame):
         symptoms_combobox = ttk.Combobox(symptoms_container, textvariable=self.symptoms, values=symptoms_options)
         symptoms_combobox.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
 
+    # Function to add radiobuttons for contact status
+    def create_contact_radiobutton(self, frame):  
+        contact_container = ttk.Frame(frame)
+        contact_container.pack(fill=tk.X, expand=True, pady=5)
+
+        contact_label = ttk.Label(master=contact_container, text="4. Have you been in contact with a person that has COVID-19 symptoms?", width=70)
+        contact_label.pack(side=tk.LEFT, padx=5)
+
+        contact_options = ["Yes", "No"]
+        for option in contact_options:
+            ttk.Radiobutton(contact_container, text=option, variable=self.contact_status, value=option).pack(side=tk.LEFT)
