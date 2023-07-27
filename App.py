@@ -216,3 +216,26 @@ class HDF(ttk.Frame):
         # Get the COVID-19 test status value
         covid_test_status = self.covid_test_status.get()  
 
+        print("Name:", name)
+        print("Date:", date)
+        print("Age:", age)
+        print("Gender:", gender)
+        print("Address:", address)
+        print("Phone Number:", phone_number)
+        print("Email Address:", email_address)
+        print("Vaccination Status:", vaccination_status)
+        print("Symptoms:", symptoms)
+        print("Exposure Status:", exposure_status)
+        print("Contact with COVID-19 Symptoms:", contact_status)
+        print("COVID-19 Test Status:", covid_test_status)
+
+        contact_name = self.contact_name.get()
+        contact_number = self.contact_number.get()
+        contact_email = self.contact_email.get()
+        relationship = self.relationship.get()
+
+        print("Name:", contact_name)
+        print("Contact Number:", contact_number)
+        print("Email Address:", contact_email)
+        print("Relationship to the contact person:", relationship)
+    
