@@ -35,3 +35,6 @@ class HDF(ttk.Frame):
         self.contact_number = ttk.StringVar(value="")
         self.contact_email = ttk.StringVar(value="")
         self.relationship = ttk.StringVar(value="")
+
+        self.data = []
+        self.colors = ttk.Style(theme='solar').colors
