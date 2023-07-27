@@ -238,4 +238,10 @@ class HDF(ttk.Frame):
         print("Contact Number:", contact_number)
         print("Email Address:", contact_email)
         print("Relationship to the contact person:", relationship)
-    
+   
+        toast = ToastNotification(title="Submission successful!", message="Your data has been successfully submitted.", duration=3000)
+        toast.show_toast()
+
+        self.data.append((name, date, age, gender, address, phone_number, email_address, vaccination_status, symptoms, exposure_status, contact_status, covid_test_status))
+        self.table.destroy()
+        self.table = self.create_table()
